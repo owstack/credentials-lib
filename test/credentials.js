@@ -511,4 +511,18 @@ describe('Credentials', function() {
 
   });
 
+  describe('Utilities', function() {
+
+    it('should get copayer hash', function() {
+      var c = Credentials.fromExtendedPrivateKey('xprv9s21ZrQH143K3zLpjtB4J4yrRfDTEfbrMa9vLZaTAv5BzASwBmA16mdBmZKpMLssw1AzTnm31HAD2pk2bsnZ9dccxaLD48mRdhtw82XoiBi', {
+        account: 0,
+        derivationStrategy: 'BIP44'
+      });
+      c.addWalletInfo(1, 'name', 1, 1, 'juan');
+      var hash = c.getCopayerHash();
+      hash.should.equal("juan|xpub6BtyS2Xn6ozUbhTgSAxQQzCnUwSuZWucc1amRmWi9oNsd4XTg3JmHTEpnShjF1kGs6U77ED3dEUKkCsX6vFDgFQ38G5BGh3wupZvc8DoGma|03767f64b351d3c9b85d7cbd7b682d8a2ea393b3adee6ae0668afded4000d9bdfa");
+    });
+
+  });
+
 });
