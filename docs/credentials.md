@@ -8,7 +8,6 @@ Sample credentials object.
 ```javascript
 credentials = {
   account: 0,
-  compliantDerivation: true,
   copayerId: "db8079078298b0fe2edb388d328e018fc08e17bc9940e2a96a59b4c9893a1849",
   currency: "btc",
   derivationStrategy: "BIP44",

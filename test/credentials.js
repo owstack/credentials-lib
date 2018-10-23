@@ -92,7 +92,7 @@ describe('Credentials', function() {
       should.exist(c.copayerId);
     });
 
-    it('should derive compliant child', function() {
+    it('should derive child', function() {
       var c = Credentials.fromExtendedPrivateKey('xprv9s21ZrQH143K3zLpjtB4J4yrRfDTEfbrMa9vLZaTAv5BzASwBmA16mdBmZKpMLssw1AzTnm31HAD2pk2bsnZ9dccxaLD48mRdhtw82XoiBi', {
         account: 0,
         derivationStrategy: 'BIP44'
@@ -132,9 +132,9 @@ describe('Credentials', function() {
       c.walletPrivKey.should.equal(wKey);
     });
 
-    describe('Compliant derivation', function() {
+    describe('Derivation', function() {
 
-      it('Should create compliant base address derivation key', function() {
+      it('Should create base address derivation key', function() {
         var xPriv = 'xprv9s21ZrQH143K4HHBKb6APEoa5i58fxeFWP1x5AGMfr6zXB3A6Hjt7f9LrPXp9P7CiTCA3Hk66cS4g8enUHWpYHpNhtufxSrSpcbaQyVX163';
         var c = Credentials.fromExtendedPrivateKey(xPriv, {
         account: 0,
@@ -143,7 +143,7 @@ describe('Credentials', function() {
         c.xPubKey.should.equal('xpub6CUtFEwZKBEyX6xF4ECdJdfRBBo69ufVgmRpy7oqzWJBSadSZ3vaqvCPNFsarga4UWcgTuoDQL7ZnpgWkUVUAX3oc7ej8qfLEuhMALGvFwX');
       });
 
-      it('Should create compliant request key', function() {
+      it('Should create request key', function() {
         var xPriv = 'xprv9s21ZrQH143K3xMCR1BNaUrTuh1XJnsj8KjEL5VpQty3NY8ufgbR8SjZS8B4offHq6Jj5WhgFpM2dcYxeqLLCuj1wgMnSfmZuPUtGk8rWT7';
         var c = Credentials.fromExtendedPrivateKey(xPriv, {
           account: 0,
@@ -245,9 +245,9 @@ describe('Credentials', function() {
       c.network.should.equal('BTC');
     });
 
-    describe('Compliant derivation', function() {
+    describe('Derivation', function() {
 
-      it('Should create compliant base address derivation key from mnemonic', function() {
+      it('Should create base address derivation key from mnemonic', function() {
         var words = "shoulder sphere pull seven top much black copy labor dress depth unit";
         var c = Credentials.fromMnemonic(words, {
         network: 'BTC',
@@ -259,7 +259,7 @@ describe('Credentials', function() {
         c.xPubKey.should.equal('xpub6DVMaW3r1CcZcsUazSHspjRfZZJzZG3N7GRL4DciY54Z8M4KmRSDrq2hd75VzxKZDXPu4EKiAwCGwiXMxec2pq6oVgtZYxQHSrgtxksWehx');
       });
 
-      it('Should create compliant request key from mnemonic', function() {
+      it('Should create request key from mnemonic', function() {
         var words = "pool stomach bridge series powder mammal betray slogan pass roast neglect reunion";
         var c = Credentials.fromMnemonic(words, {
         network: 'BTC',
