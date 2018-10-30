@@ -8,6 +8,9 @@ var should = chai.should();
 var Constants = require('../lib/common/constants');
 var Credentials = require('../lib/credentials');
 
+// Setup some networks for tests.
+require('./data/networks');
+
 describe('Credentials', function() {
 
   describe('#create', function() {

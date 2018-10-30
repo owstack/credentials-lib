@@ -23,15 +23,15 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "@owstack/ows-common": "^0.0.3",
-    "@owstack/key-lib": "^0.0.1",
+    "@owstack/ows-common": "^0.0.8",
+    "@owstack/key-lib": "^0.0.6",
     "@owstack/mnemonic-lib": "^0.0.1",
     "lodash": "^4.17.4",
     "preconditions": "^1.0.8",
     "sjcl": "1.0.3"
   },
   "devDependencies": {
-    "@owstack/ows-build": "^0.0.3",
+    "@owstack/ows-build": "^0.0.12",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
