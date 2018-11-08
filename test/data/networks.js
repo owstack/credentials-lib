@@ -1,8 +1,8 @@
 'use strict;'
 
 var Bip44 = require('bip44-constants');
-var keyLib = require('@owstack/key-lib');
-var Networks = keyLib.Networks;
+var networkLib = require('@owstack/network-lib');
+var Networks = networkLib.Networks;
 
 Networks.add([{
 	name: 'Bitcoin',
