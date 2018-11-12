@@ -68,4 +68,4 @@ or create a test coverage report (you can open `coverage/lcov-report/index.html`
 
 Code released under [the MIT license](https://github.com/owstack/credentials-lib/blob/master/LICENSE).
 
-Copyright 2018 Open Wallet Stack. CredentialsLib is a trademark maintained by Open Wallet Stack.
+Copyright 2018 Open Wallet Stack.

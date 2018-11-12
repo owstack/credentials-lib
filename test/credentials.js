@@ -1,12 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
 var chai = chai || require('chai');
 var sinon = sinon || require('sinon');
 var should = chai.should();
 
-var Constants = require('../lib/common/constants');
+var owsCommon = require('@owstack/ows-common');
+var Constants = owsCommon.Constants;
 var Credentials = require('../lib/credentials');
+var lodash = owsCommon.deps.lodash;
 
 // Setup some networks for tests.
 require('./data/networks');
@@ -320,7 +321,7 @@ describe('Credentials', function() {
 
   describe('#fromRandomMnemonic #fromMnemonic roundtrip', function() {
 
-    _.each(['en', 'es', 'ja', 'zh', 'fr'], function(lang) {
+    lodash.each(['en', 'es', 'ja', 'zh', 'fr'], function(lang) {
       it('Should verify roundtrip create/from with ' + lang + '/passphrase', function() {
         var c = Credentials.fromRandomMnemonic({
           network: 'BTC',

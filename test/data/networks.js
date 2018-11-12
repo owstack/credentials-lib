@@ -1,12 +1,11 @@
 'use strict;'
 
 var Bip44 = require('bip44-constants');
-var networkLib = require('@owstack/network-lib');
-var Networks = networkLib.Networks;
+var Networks = require('@owstack/network-lib');
 
 Networks.add([{
 	name: 'Bitcoin',
-	symbol: 'BTC',
+	code: 'BTC',
 	coin: Bip44['BTC'] ^ 0x80000000,
 	protocol: 'bitcoin',
 	prefix: {
@@ -27,11 +26,10 @@ Networks.add([{
     'seed.bitcoinstats.com',
     'seed.bitnodes.io',
     'bitseed.xf2.org'
-	],
-	indexBy: Networks.indexAll
+	]
 }, {
 	name: 'Bitcoin Cash',
-	symbol: 'BCH',
+	code: 'BCH',
 	coin: Bip44['BCH'] ^ 0x80000000,
 	protocol: 'bitcoincash',
 	prefix: {
@@ -51,11 +49,10 @@ Networks.add([{
     'btccash-seeder.bitcoinunlimited.info',
     'seed.bitprim.org ',
     'seed.deadalnix.me'
-	],
-	indexBy: Networks.indexAll
+	]
 }, {
 	name: 'Litecoin',
-	symbol: 'LTC',
+	code: 'LTC',
 	coin: Bip44['LTC'] ^ 0x80000000,
 	protocol: 'litecoin',
 	prefix: {
@@ -77,11 +74,10 @@ Networks.add([{
     'dnsseed.koin-project.com',
     'seed-a.litecoin.loshan.co.uk',
     'dnsseed.thrasher.io'
-	],
-	indexBy: Networks.indexAll
+	]
 }, {
 	name: 'BCH Testnet',
-	symbol: 'BCHTEST',
+	code: 'BCHTEST',
 	coin: 0x00000001 ^ 0x80000000,
 	protocol: 'bchtest',
 	prefix: {
@@ -100,6 +96,5 @@ Networks.add([{
     'testnet-seed.bluematt.me',
     'testnet-seed.alexykot.me',
     'testnet-seed.bitcoin.schildbach.de'
-	],
-	indexBy: Networks.indexAll
+	]
 }]);
