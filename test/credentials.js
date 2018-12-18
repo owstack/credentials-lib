@@ -13,9 +13,7 @@ var lodash = owsCommon.deps.lodash;
 require('./data/networks');
 
 describe('Credentials', function() {
-
   describe('#create', function() {
-
     it('Should create', function() {
       var c = Credentials.fromRandom({network: 'BTC'});
       should.exist(c.xPrivKey);
@@ -30,11 +28,9 @@ describe('Credentials', function() {
         all[c.xPrivKey] = 1;
       }
     });
-
   });
 
   describe('#getBaseAddressDerivationPath', function() {
-
     it('should return path for BTC network', function() {
       var c = Credentials.fromRandom({network: 'BTC'});
       var path = c.getBaseAddressDerivationPath();
@@ -54,11 +50,9 @@ describe('Credentials', function() {
       var path = c.getBaseAddressDerivationPath();
       path.should.equal("m/45'");
     });
-
   });
 
   describe('#getDerivedXPrivKey', function() {
-
     it('should derive extended private key from master BTC network', function() {
       var c = Credentials.fromExtendedPrivateKey('xprv9s21ZrQH143K3zLpjtB4J4yrRfDTEfbrMa9vLZaTAv5BzASwBmA16mdBmZKpMLssw1AzTnm31HAD2pk2bsnZ9dccxaLD48mRdhtw82XoiBi', {
         account: 0,
@@ -104,11 +98,9 @@ describe('Credentials', function() {
       var xpk = c.getDerivedXPrivKey().toString();
       xpk.should.equal('xprv9xud2WztGSSBPDPDL9RQ3rG3vucRA4BmEnfAdP76bTqtkGCK8VzWjevLw9LsdqwH1PEWiwcjymf1T2FLp12XjwjuCRvcSBJvxDgv1BDTbWY');
     });
-
   });
 
   describe('#fromExtendedPrivateKey', function() {
-
     it('Should create credentials from seed', function() {
       var xPriv = 'xprv9s21ZrQH143K2TjT3rF4m5AJcMvCetfQbVjFEx1Rped8qzcMJwbqxv21k3ftL69z7n3gqvvHthkdzbW14gxEFDYQdrRQMub3XdkJyt3GGGc';
       var c = Credentials.fromExtendedPrivateKey(xPriv, {
@@ -137,7 +129,6 @@ describe('Credentials', function() {
     });
 
     describe('Derivation', function() {
-
       it('Should create base address derivation key', function() {
         var xPriv = 'xprv9s21ZrQH143K4HHBKb6APEoa5i58fxeFWP1x5AGMfr6zXB3A6Hjt7f9LrPXp9P7CiTCA3Hk66cS4g8enUHWpYHpNhtufxSrSpcbaQyVX163';
         var c = Credentials.fromExtendedPrivateKey(xPriv, {
@@ -161,7 +152,6 @@ describe('Credentials', function() {
   });
 
   describe('#fromMnemonic', function() {
-
     it('Should create credentials from mnemonic BIP44', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
@@ -250,7 +240,6 @@ describe('Credentials', function() {
     });
 
     describe('Derivation', function() {
-
       it('Should create base address derivation key from mnemonic', function() {
         var words = "shoulder sphere pull seven top much black copy labor dress depth unit";
         var c = Credentials.fromMnemonic(words, {
@@ -274,13 +263,10 @@ describe('Credentials', function() {
         c.xPrivKey.should.equal('xprv9s21ZrQH143K3ZMudFRXpEwftifDuJkjLKnCtk26pXhxQuK8bCnytJuUTGkfvaibnCxPQQ9xToUtDAZkJqjm3W62GBXXr7JwhiAz1XWgTUJ');
         c.requestPrivKey.should.equal('7582efa9b71aefa831823592d753704cba9648b810b14b77ee078dfe8b730157');
       });
-
     });
-
   });
 
   describe('#fromRandomMnemonic', function() {
-
     it('Should create credentials with mnemonic', function() {
       var c = Credentials.fromRandomMnemonic({
         network: 'BTC',
@@ -320,7 +306,6 @@ describe('Credentials', function() {
   });
 
   describe('#fromRandomMnemonic #fromMnemonic roundtrip', function() {
-
     lodash.each(['en', 'es', 'ja', 'zh', 'fr'], function(lang) {
       it('Should verify roundtrip create/from with ' + lang + '/passphrase', function() {
         var c = Credentials.fromRandomMnemonic({
@@ -373,9 +358,7 @@ describe('Credentials', function() {
   });
 
   describe('Private key encryption', function() {
-
     describe('#encryptPrivateKey', function() {
-
       it('should encrypt private key and remove cleartext', function() {
         var c = Credentials.fromRandomMnemonic({
           network: 'BTC',
@@ -405,7 +388,6 @@ describe('Credentials', function() {
     });
 
     describe('#decryptPrivateKey', function() {
-
       it('should decrypt private key', function() {
         var c = Credentials.fromRandomMnemonic({
           network: 'BTC',
@@ -459,7 +441,6 @@ describe('Credentials', function() {
     });
 
     describe('#getKeys', function() {
-
       it('should get keys regardless of encryption', function() {
         var c = Credentials.fromRandomMnemonic({
           network: 'BTC',
@@ -510,13 +491,10 @@ describe('Credentials', function() {
         should.exist(xPrivKey3);
         xPrivKey3.toString('hex').should.equal(xPrivKey.toString('hex'));
       });
-
     });
-
   });
 
   describe('Utilities', function() {
-
     it('should get copayer hash', function() {
       var c = Credentials.fromExtendedPrivateKey('xprv9s21ZrQH143K3zLpjtB4J4yrRfDTEfbrMa9vLZaTAv5BzASwBmA16mdBmZKpMLssw1AzTnm31HAD2pk2bsnZ9dccxaLD48mRdhtw82XoiBi', {
         account: 0,
@@ -526,7 +504,6 @@ describe('Credentials', function() {
       var hash = c.getCopayerHash();
       hash.should.equal("juan|xpub6BtyS2Xn6ozUbhTgSAxQQzCnUwSuZWucc1amRmWi9oNsd4XTg3JmHTEpnShjF1kGs6U77ED3dEUKkCsX6vFDgFQ38G5BGh3wupZvc8DoGma|03767f64b351d3c9b85d7cbd7b682d8a2ea393b3adee6ae0668afded4000d9bdfa");
     });
-
   });
 
 });
