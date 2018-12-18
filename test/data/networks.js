@@ -8,15 +8,23 @@ Networks.add([{
 	code: 'BTC',
 	coin: Bip44['BTC'] ^ 0x80000000,
 	protocol: 'bitcoin',
+	preference: 'BTC',
+  alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
 	  privatekey: 0x80,
 	  scripthash: 0x05,
 	},
-	version: {
-	  xpubkey: 0x0488b21e,
-	  xprivkey: 0x0488ade4
-	},
+  version: { // see SLIP132
+    xpubkey: {
+      bytes: 0x0488b21e,
+      text: 'xpub'
+    },
+    xprivkey: {
+      bytes: 0x0488ade4,
+      text: 'xprv'
+    }
+  },
   networkMagic: 0xf9beb4d9,
 	port: 8333,
 	dnsSeeds: [
@@ -32,15 +40,23 @@ Networks.add([{
 	code: 'BCH',
 	coin: Bip44['BCH'] ^ 0x80000000,
 	protocol: 'bitcoincash',
+	preference: 'BCH',
+  alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
 	  privatekey: 0x80,
 	  scripthash: 0x05,
 	},
-	version: {
-	  xpubkey: 0x03f72812, // 'qpub..' (no BCH version strings registered); see SLIP132
-	  xprivkey: 0x03f723d8 // 'qprv..' (no BCH version strings registered); see SLIP132
-	},
+  version: { // see SLIP132 (no BCH version strings registered)
+    xpubkey: {
+      bytes: 0x03f72812,
+      text: 'qpub'
+    },
+    xprivkey: {
+      bytes: 0x03f723d8,
+      text: 'qprv'
+    }
+  },
   networkMagic: 0xe3e1f3e8,
 	port: 8333,
 	dnsSeeds: [
@@ -55,16 +71,24 @@ Networks.add([{
 	code: 'LTC',
 	coin: Bip44['LTC'] ^ 0x80000000,
 	protocol: 'litecoin',
+	preference: 'LTC',
+  alias: 'livenet',
 	prefix: {
 		pubkeyhash: 0x30,
 	  privatekey: 0xb0,
 	  scripthash: 0x05,
 	  scripthash2: 0x32,
 	},
-	version: {
-	  xpubkey: 0x019da462,
-	  xprivkey: 0x019d9cfe,
-	},
+  version: { // see SLIP132
+    xpubkey: {
+      bytes: 0x019da462,
+      text: 'Ltub'
+    },
+    xprivkey: {
+      bytes: 0x019d9cfe,
+      text: 'Ltpv'
+    }
+  },
   networkMagic: 0xfbc0b6db,
 	port: 9333,
 	dnsSeeds: [
@@ -80,15 +104,23 @@ Networks.add([{
 	code: 'BCHTEST',
 	coin: 0x00000001 ^ 0x80000000,
 	protocol: 'bchtest',
+	preference: 'BCH',
+  alias: 'testnet',
 	prefix: {
 		pubkeyhash: 0x6f,
 	  privatekey: 0xef,
 	  scripthash: 0xc4
 	},
-	version: {
-	  xpubkey: 0x0435dbaa, // 'tqpb..' (no BCH testnet version strings registered); see SLIP132
-	  xprivkey: 0x0435dc2e // 'tqpv..' (no BCH testnet version strings registered); see SLIP132
-	},
+  version: { // see SLIP132 (no BCH version strings registered)
+    xpubkey: {
+      bytes: 0x0435dbaa,
+      text: 'tqpb'
+    },
+    xprivkey: {
+      bytes: 0x0435dc2e,
+      text: 'tqpv'
+    }
+  },
   networkMagic: 0x0b110907,
 	port: 18333,
 	dnsSeeds: [
