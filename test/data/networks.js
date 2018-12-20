@@ -4,11 +4,11 @@ var Bip44 = require('bip44-constants');
 var Networks = require('@owstack/network-lib');
 
 Networks.add([{
-	name: 'Bitcoin',
-	code: 'BTC',
-	coin: Bip44['BTC'] ^ 0x80000000,
+  currency: 'BTC',
+  description: 'Bitcoin',
+	name: 'BTC',
+	coinIndex: Bip44['BTC'] ^ 0x80000000,
 	protocol: 'bitcoin',
-	preference: 'BTC',
   alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
@@ -36,11 +36,11 @@ Networks.add([{
     'bitseed.xf2.org'
 	]
 }, {
-	name: 'Bitcoin Cash',
-	code: 'BCH',
-	coin: Bip44['BCH'] ^ 0x80000000,
+  currency: 'BCH',
+	description: 'Bitcoin Cash',
+	name: 'BCH',
+	coinIndex: Bip44['BCH'] ^ 0x80000000,
 	protocol: 'bitcoincash',
-	preference: 'BCH',
   alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
@@ -67,11 +67,11 @@ Networks.add([{
     'seed.deadalnix.me'
 	]
 }, {
-	name: 'Litecoin',
-	code: 'LTC',
-	coin: Bip44['LTC'] ^ 0x80000000,
+  currency: 'LTC',
+	description: 'Litecoin',
+	name: 'LTC',
+	coinIndex: Bip44['LTC'] ^ 0x80000000,
 	protocol: 'litecoin',
-	preference: 'LTC',
   alias: 'livenet',
 	prefix: {
 		pubkeyhash: 0x30,
@@ -100,11 +100,11 @@ Networks.add([{
     'dnsseed.thrasher.io'
 	]
 }, {
-	name: 'BCH Testnet',
-	code: 'BCHTEST',
-	coin: 0x00000001 ^ 0x80000000,
+  currency: 'BCH',
+	description: 'BCH Testnet',
+	name: 'BCHTEST',
+	coinIndex: 0x00000001 ^ 0x80000000,
 	protocol: 'bchtest',
-	preference: 'BCH',
   alias: 'testnet',
 	prefix: {
 		pubkeyhash: 0x6f,
