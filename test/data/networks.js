@@ -6,10 +6,10 @@ var Networks = require('@owstack/network-lib');
 Networks.add([{
   currency: 'BTC',
   description: 'Bitcoin',
-	name: 'BTC',
+	name: 'btc',
+  alias: 'livenet',
 	coinIndex: Bip44['BTC'] ^ 0x80000000,
 	protocol: 'bitcoin',
-  alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
 	  privatekey: 0x80,
@@ -38,10 +38,10 @@ Networks.add([{
 }, {
   currency: 'BCH',
 	description: 'Bitcoin Cash',
-	name: 'BCH',
+	name: 'bch',
+  alias: 'livenet',
 	coinIndex: Bip44['BCH'] ^ 0x80000000,
 	protocol: 'bitcoincash',
-  alias: 'livenet',
 	prefix: {
 	  pubkeyhash: 0x00,
 	  privatekey: 0x80,
@@ -69,10 +69,10 @@ Networks.add([{
 }, {
   currency: 'LTC',
 	description: 'Litecoin',
-	name: 'LTC',
+	name: 'ltc',
+  alias: 'livenet',
 	coinIndex: Bip44['LTC'] ^ 0x80000000,
 	protocol: 'litecoin',
-  alias: 'livenet',
 	prefix: {
 		pubkeyhash: 0x30,
 	  privatekey: 0xb0,
@@ -102,10 +102,10 @@ Networks.add([{
 }, {
   currency: 'BCH',
 	description: 'BCH Testnet',
-	name: 'BCHTEST',
+	name: 'bchtest',
+  alias: 'testnet',
 	coinIndex: 0x00000001 ^ 0x80000000,
 	protocol: 'bchtest',
-  alias: 'testnet',
 	prefix: {
 		pubkeyhash: 0x6f,
 	  privatekey: 0xef,

@@ -15,14 +15,14 @@ require('./data/networks');
 describe('Credentials', function() {
   describe('#create', function() {
     it('Should create', function() {
-      var c = Credentials.fromRandom({networkName: 'BTC'});
+      var c = Credentials.fromRandom({networkName: 'btc'});
       should.exist(c.xPrivKey);
     });
 
     it('Should create random credentials', function() {
       var all = {};
       for (var i = 0; i < 10; i++) {
-        var c = Credentials.fromRandom({networkName: 'BTC'});
+        var c = Credentials.fromRandom({networkName: 'btc'});
         var exist = all[c.xPrivKey];
         should.not.exist(exist);
         all[c.xPrivKey] = 1;
@@ -32,20 +32,20 @@ describe('Credentials', function() {
 
   describe('#getBaseAddressDerivationPath', function() {
     it('should return path for BTC network', function() {
-      var c = Credentials.fromRandom({networkName: 'BTC'});
+      var c = Credentials.fromRandom({networkName: 'btc'});
       var path = c.getBaseAddressDerivationPath();
       path.should.equal("m/44'/0'/0'");
     });
 
     it('should return path for BTC network account 2', function() {
-      var c = Credentials.fromRandom({networkName: 'BTC'});
+      var c = Credentials.fromRandom({networkName: 'btc'});
       c.account = 2;
       var path = c.getBaseAddressDerivationPath();
       path.should.equal("m/44'/0'/2'");
     });
 
     it('should return path for BIP45', function() {
-      var c = Credentials.fromRandom({networkName: 'BTC'});
+      var c = Credentials.fromRandom({networkName: 'btc'});
       c.derivationStrategy = Constants.DERIVATION_STRATEGIES.BIP45;
       var path = c.getBaseAddressDerivationPath();
       path.should.equal("m/45'");
@@ -110,8 +110,8 @@ describe('Credentials', function() {
 
       c.xPrivKey.should.equal('xprv9s21ZrQH143K2TjT3rF4m5AJcMvCetfQbVjFEx1Rped8qzcMJwbqxv21k3ftL69z7n3gqvvHthkdzbW14gxEFDYQdrRQMub3XdkJyt3GGGc');
       c.xPubKey.should.equal('xpub6DUean44k773kxbUq8QpSmAPFaNCpk5AzrxbFRAMsNCZBGD15XQVnRJCgNd8GtJVmDyDZh89NPZz1XPQeX5w6bAdLGfSTUuPDEQwBgKxfh1');
-      c.network.should.equal('livenet');
-      c.currency.should.equal('btc');
+      c.networkName.should.equal('btc');
+      c.currency.should.equal('BTC');
       c.personalEncryptingKey.should.equal('M4MTmfRZaTtX6izAAxTpJg==');
       should.not.exist(c.walletPrivKey);
     });
@@ -156,14 +156,14 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic BIP44', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 0,
         derivationStrategy: 'BIP44'
       });
       c.xPrivKey.should.equal('xprv9s21ZrQH143K3GJpoapnV8SFfukcVBSfeCficPSGfubmSFDxo1kuHnLisriDvSnRRuL2Qrg5ggqHKNVpxR86QEC8w35uxmGoggxtQTPvfUu');
-      c.network.should.equal('livenet');
-      c.currency.should.equal('btc');
+      c.networkName.should.equal('btc');
+      c.currency.should.equal('BTC');
       c.account.should.equal(0);
       c.derivationStrategy.should.equal('BIP44');
       c.xPubKey.should.equal('xpub6BosfCnifzxcFwrSzQiqu2DBVTshkCXacvNsWGYJVVhhawA7d4R5WSWGFNbi8Aw6ZRc1brxMyWMzG3DSSSSoekkudhUd9yLb6qx39T9nMdj');
@@ -173,14 +173,14 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic BIP48', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 0,
         derivationStrategy: 'BIP48'
       });
       c.xPrivKey.should.equal('xprv9s21ZrQH143K3GJpoapnV8SFfukcVBSfeCficPSGfubmSFDxo1kuHnLisriDvSnRRuL2Qrg5ggqHKNVpxR86QEC8w35uxmGoggxtQTPvfUu');
-      c.network.should.equal('livenet');
-      c.currency.should.equal('btc');
+      c.networkName.should.equal('btc');
+      c.currency.should.equal('BTC');
       c.account.should.equal(0);
       c.derivationStrategy.should.equal('BIP48');
       c.xPubKey.should.equal('xpub6CKZtUaK1YHpQbg6CLaGRmsMKLQB1iKzsvmxtyHD6X7gzLqCB2VNZYd1XCxrccQnE8hhDxtYbR1Sakkvisy2J4CcTxWeeGjmkasCoNS9vZm');
@@ -190,7 +190,7 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic account 1', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 1,
         derivationStrategy: 'BIP44'
@@ -204,14 +204,14 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic with undefined/null passphrase', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: undefined,
         account: 0,
         derivationStrategy: 'BIP44'
       });
       c.xPrivKey.should.equal('xprv9s21ZrQH143K3GJpoapnV8SFfukcVBSfeCficPSGfubmSFDxo1kuHnLisriDvSnRRuL2Qrg5ggqHKNVpxR86QEC8w35uxmGoggxtQTPvfUu');
       c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: null,
         account: 0,
         derivationStrategy: 'BIP44'
@@ -222,7 +222,7 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic and passphrase', function() {
       var words = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: 'húngaro',
         account: 0,
         derivationStrategy: 'BIP44'
@@ -233,21 +233,21 @@ describe('Credentials', function() {
     it('Should create credentials from mnemonic (ES)', function() {
       var words = 'afirmar diseño hielo fideo etapa ogro cambio fideo toalla pomelo número buscar';
       var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 0,
         derivationStrategy: 'BIP44'
       });
       c.xPrivKey.should.equal('xprv9s21ZrQH143K3H3WtXCn9nHtpi7Fz1ZE9VJErWErhrGL4hV1cApFVo3t4aANoPF7ufcLLWqN168izu3xGQdLaGxXG2qYZF8wWQGNWnuSSon');
-      c.network.should.equal('livenet');
-      c.currency.should.equal('btc');
+      c.networkName.should.equal('btc');
+      c.currency.should.equal('BTC');
     });
 
     describe('Derivation', function() {
       it('Should create base address derivation key from mnemonic', function() {
         var words = "shoulder sphere pull seven top much black copy labor dress depth unit";
         var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 0,
         derivationStrategy: 'BIP44'
@@ -259,7 +259,7 @@ describe('Credentials', function() {
       it('Should create request key from mnemonic', function() {
         var words = "pool stomach bridge series powder mammal betray slogan pass roast neglect reunion";
         var c = Credentials.fromMnemonic(words, {
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         account: 0,
         derivationStrategy: 'BIP44'
@@ -273,21 +273,21 @@ describe('Credentials', function() {
   describe('#fromRandomMnemonic', function() {
     it('Should create credentials with mnemonic', function() {
       var c = Credentials.fromRandomMnemonic({
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         language: 'en',
         account: 0
       });
       should.exist(c.mnemonic);
       c.mnemonic.split(' ').length.should.equal(12);
-      c.network.should.equal('livenet');
-      c.currency.should.equal('btc');
+      c.networkName.should.equal('btc');
+      c.currency.should.equal('BTC');
       c.account.should.equal(0);
     });
 
     it('should assume derivation compliance on new credentials', function() {
       var c = Credentials.fromRandomMnemonic({
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         language: 'en',
         account: 0
@@ -298,7 +298,7 @@ describe('Credentials', function() {
 
     it('Should return and clear mnemonic', function() {
       var c = Credentials.fromRandomMnemonic({
-        networkName: 'BTC',
+        networkName: 'btc',
         passphrase: '',
         language: 'en',
         account: 0
@@ -314,7 +314,7 @@ describe('Credentials', function() {
     lodash.each(['en', 'es', 'ja', 'zh', 'fr'], function(lang) {
       it('Should verify roundtrip create/from with ' + lang + '/passphrase', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: 'holamundo',
           language: lang,
           account: 0
@@ -325,7 +325,7 @@ describe('Credentials', function() {
         var path = c.getBaseAddressDerivationPath();
 
         var c2 = Credentials.fromMnemonic(words, {
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: 'holamundo',
           account: 0,
           derivationStrategy: 'BIP44'
@@ -333,14 +333,14 @@ describe('Credentials', function() {
         should.exist(c2.mnemonic);
         words.should.be.equal(c2.mnemonic);
         c2.xPrivKey.should.equal(c.xPrivKey);
-        c2.network.should.equal(c.network);
+        c2.networkName.should.equal(c.networkName);
         c2.getBaseAddressDerivationPath().should.equal(path);
       });
     });
 
     it('Should fail roundtrip create/from with ES/passphrase with wrong passphrase', function() {
       var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: 'holamundo',
           language: 'es',
           account: 0
@@ -351,12 +351,12 @@ describe('Credentials', function() {
       var path = c.getBaseAddressDerivationPath();
 
       var c2 = Credentials.fromMnemonic(words, {
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: 'chaumundo',
           account: 0,
           derivationStrategy: 'BIP44'
         });
-      c2.network.should.equal(c.network);
+      c2.networkName.should.equal(c.networkName);
       c2.getBaseAddressDerivationPath().should.equal(path);
       c2.xPrivKey.should.not.equal(c.xPrivKey);
     });
@@ -366,7 +366,7 @@ describe('Credentials', function() {
     describe('#encryptPrivateKey', function() {
       it('should encrypt private key and remove cleartext', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: '',
           language: 'en',
           account: 0
@@ -380,7 +380,7 @@ describe('Credentials', function() {
       });
 
       it('should fail to encrypt private key if already encrypted', function() {
-        var c = Credentials.fromRandom({networkName: 'BTC'});
+        var c = Credentials.fromRandom({networkName: 'btc'});
         c.encryptPrivateKey('password');
         var err;
         try {
@@ -395,7 +395,7 @@ describe('Credentials', function() {
     describe('#decryptPrivateKey', function() {
       it('should decrypt private key', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: '',
           language: 'en',
           account: 0
@@ -412,7 +412,7 @@ describe('Credentials', function() {
 
       it('should fail to decrypt private key with wrong password', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: '',
           language: 'en',
           account: 0
@@ -432,7 +432,7 @@ describe('Credentials', function() {
       });
 
       it('should fail to decrypt private key when not encrypted', function() {
-        var c = Credentials.fromRandom({networkName: 'BTC'});
+        var c = Credentials.fromRandom({networkName: 'btc'});
 
         var err;
         try {
@@ -448,7 +448,7 @@ describe('Credentials', function() {
     describe('#getKeys', function() {
       it('should get keys regardless of encryption', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: '',
           language: 'en',
           account: 0
@@ -475,7 +475,7 @@ describe('Credentials', function() {
 
       it('should get derived keys regardless of encryption', function() {
         var c = Credentials.fromRandomMnemonic({
-          networkName: 'BTC',
+          networkName: 'btc',
           passphrase: '',
           language: 'en',
           account: 0
