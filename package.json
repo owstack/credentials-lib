@@ -1,6 +1,6 @@
 {
   "name": "@owstack/credentials-lib",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A JavaScript cryptocurrency credentials library.",
   "main": "index.js",
   "scripts": {
@@ -23,10 +23,10 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "@owstack/ows-common": "^0.0.11",
-    "@owstack/key-lib": "^0.0.27",
-    "@owstack/mnemonic-lib": "^0.0.17",
-    "@owstack/network-lib": "^0.0.17",
+    "@owstack/ows-common": "^0.0.13",
+    "@owstack/key-lib": "^0.0.28",
+    "@owstack/mnemonic-lib": "^0.0.18",
+    "@owstack/network-lib": "^0.0.18",
     "preconditions": "^1.0.8",
     "sjcl": "1.0.3"
   },
