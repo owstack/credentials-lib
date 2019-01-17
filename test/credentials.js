@@ -85,7 +85,7 @@ describe('Credentials', function() {
         account: 8,
         derivationStrategy: 'BIP45'
       });
-      c.addWalletInfo(1, 'name', 1, 1, 'juan');
+      c.copayerName = 'juan';
       c.account.should.equal(8);
       should.exist(c.copayerId);
     });
@@ -113,20 +113,20 @@ describe('Credentials', function() {
       c.networkName.should.equal('btc');
       c.currency.should.equal('BTC');
       c.personalEncryptingKey.should.equal('M4MTmfRZaTtX6izAAxTpJg==');
-      should.not.exist(c.walletPrivKey);
+      should.not.exist(c.privKey);
     });
 
-    it('Should create credentials from seed and walletPrivateKey', function() {
+    it('Should create credentials from seed and privateKey', function() {
       var xPriv = 'xprv9s21ZrQH143K2TjT3rF4m5AJcMvCetfQbVjFEx1Rped8qzcMJwbqxv21k3ftL69z7n3gqvvHthkdzbW14gxEFDYQdrRQMub3XdkJyt3GGGc';
       var wKey = 'a28840e18650b1de8cb83bcd2213672a728be38a63e70680b0c2be9c452e2d4d';
       var c = Credentials.fromExtendedPrivateKey(xPriv, {
         account: 0,
         derivationStrategy: 'BIP44',
-        walletPrivKey: 'a28840e18650b1de8cb83bcd2213672a728be38a63e70680b0c2be9c452e2d4d'
+        privKey: 'a28840e18650b1de8cb83bcd2213672a728be38a63e70680b0c2be9c452e2d4d'
       });
 
       c.xPrivKey.should.equal('xprv9s21ZrQH143K2TjT3rF4m5AJcMvCetfQbVjFEx1Rped8qzcMJwbqxv21k3ftL69z7n3gqvvHthkdzbW14gxEFDYQdrRQMub3XdkJyt3GGGc');
-      c.walletPrivKey.should.equal(wKey);
+      c.privKey.should.equal(wKey);
     });
 
     describe('Derivation', function() {
@@ -505,7 +505,7 @@ describe('Credentials', function() {
         account: 0,
         derivationStrategy: 'BIP44'
       });
-      c.addWalletInfo(1, 'name', 1, 1, 'juan');
+      c.copayerName = 'juan';
       var hash = c.getCopayerHash();
       hash.should.equal("juan|xpub6BtyS2Xn6ozUbhTgSAxQQzCnUwSuZWucc1amRmWi9oNsd4XTg3JmHTEpnShjF1kGs6U77ED3dEUKkCsX6vFDgFQ38G5BGh3wupZvc8DoGma|03767f64b351d3c9b85d7cbd7b682d8a2ea393b3adee6ae0668afded4000d9bdfa");
     });
