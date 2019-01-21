@@ -30,7 +30,7 @@ describe('Credentials', function() {
     });
   });
 
-  describe('#serialization', function() {
+  describe('#extension and serialization', function() {
     it('should serialize and deserialize credentials', function () {
       var origCredentials = Credentials.fromRandom({networkName: 'btc'});
       var credentialsObj = origCredentials.toObj();
@@ -38,6 +38,24 @@ describe('Credentials', function() {
 
       var credentials = Credentials.fromObj(credentialsObj);
       credentials.xPrivKey.should.equal(origCredentials.xPrivKey);
+    });
+
+    it('should extend credentials', function () {
+      var credentials = Credentials.fromRandom({networkName: 'btc'});
+      credentials.extend({
+        type: 'my type',
+        name: 'my credentials',
+        myId: '1234'
+      });
+
+      var credentialsObj = credentials.toObj();
+      credentialsObj.extendedFields.should.eql(['name', 'myId']);
+      credentialsObj.name.should.equal('my credentials');
+      credentialsObj.myId.should.equal('1234');
+
+      credentials = Credentials.fromObj(credentialsObj);
+      credentialsObj.name.should.equal('my credentials');
+      credentialsObj.myId.should.equal('1234');
     });
   });
 
