@@ -30,6 +30,17 @@ describe('Credentials', function() {
     });
   });
 
+  describe('#serialization', function() {
+    it('should serialize and deserialize credentials', function () {
+      var origCredentials = Credentials.fromRandom({networkName: 'btc'});
+      var credentialsObj = origCredentials.toObj();
+      credentialsObj.xPrivKey.should.equal(origCredentials.xPrivKey);
+
+      var credentials = Credentials.fromObj(credentialsObj);
+      credentials.xPrivKey.should.equal(origCredentials.xPrivKey);
+    });
+  });
+
   describe('#getBaseAddressDerivationPath', function() {
     it('should return path for BTC network', function() {
       var c = Credentials.fromRandom({networkName: 'btc'});
